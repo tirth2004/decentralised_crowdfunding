@@ -1,6 +1,6 @@
 const { buildModule } = require("@nomicfoundation/hardhat-ignition/modules");
 const mockDeployments = require("../deployments/chain-31337/deployed_addresses.json");
-const {networkConfig} = "../../helper-hardhat-config";
+const {networkConfig} = require("../../helper-hardhat-config");
 
 module.exports = buildModule("FundMe",  (m)=>{
     const chainId = hre.network.config.chainId;
@@ -13,7 +13,9 @@ module.exports = buildModule("FundMe",  (m)=>{
         
         ethUsdPriceAddress = mockAddress;
     } else {
+        console.log(networkConfig);
         ethUsdPriceAddress = networkConfig[chainId]["ethUsdPriceAddress"];
+        console.log("Hey");
     }
 
     const fundme = m.contract("FundMe", [ethUsdPriceAddress]);

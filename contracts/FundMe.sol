@@ -6,6 +6,7 @@ import "./PriceConverter.sol";
 
 error NotOwner();
 
+//Author: tirth2004
 contract FundMe {
     using PriceConverter for uint256;
 
